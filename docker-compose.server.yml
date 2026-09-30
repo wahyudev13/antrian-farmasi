@@ -1,0 +1,28 @@
+# =============================================================================
+# docker-compose.server.yml
+# File ini digunakan di SERVER aaPanel (bukan di development).
+# Image sudah di-load dari file .tar, tidak perlu build ulang.
+#
+# Cara pakai di server:
+#   docker compose -f docker-compose.server.yml up -d
+# =============================================================================
+
+services:
+  app:
+    image: antrian-farmasi:latest    # image yang sudah di-load dari .tar
+    container_name: antrian-farmasi-app
+    restart: unless-stopped
+    ports:
+      - "8088:80"    # HTTP App  → akses: http://server:8088
+      - "8080:8080"  # WebSocket → akses: ws://server:8080
+    volumes:
+      - app-storage:/var/www/html/storage/app
+      - app-logs:/var/www/html/storage/logs
+    env_file:
+      - .env         # file .env ada di folder yang sama dengan file ini
+
+volumes:
+  app-storage:
+    driver: local
+  app-logs:
+    driver: local

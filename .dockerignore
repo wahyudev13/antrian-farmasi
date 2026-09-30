@@ -1,0 +1,43 @@
+# ─── Jangan masukkan file sensitif ke dalam image ────────────────────────────
+.env
+.env.*
+!.env.example
+
+# ─── Dependencies (akan di-install ulang di dalam image) ─────────────────────
+node_modules/
+vendor/
+
+# ─── Build artifacts ─────────────────────────────────────────────────────────
+public/build/
+public/hot/
+public/storage/
+
+# ─── Storage (akan di-mount sebagai volume) ──────────────────────────────────
+storage/logs/
+storage/framework/cache/
+storage/framework/sessions/
+storage/framework/views/
+
+# ─── Git & IDE ────────────────────────────────────────────────────────────────
+.git/
+.gitignore
+.gitattributes
+.vscode/
+.idea/
+.agents/
+
+# ─── Test & Dev files ────────────────────────────────────────────────────────
+tests/
+phpunit.xml
+.phpunit.result.cache
+.phpunit.cache/
+
+# ─── Docker files (compose files tidak perlu di dalam image, tapi folder docker/ PERLU) ──
+docker-compose*.yml
+
+# ─── Misc ────────────────────────────────────────────────────────────────────
+*.tar
+*.log
+README.md
+AGENTS.md
+CLAUDE.md
